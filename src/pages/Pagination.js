@@ -28,22 +28,6 @@ function Pagination() {
         fetchData();
     }, [navigate, pathname, page]);
 
-    const rendering  = () => {
-        const result = [];
-
-        if ( data.paging ) {
-            for (let i = data.paging.firstPage; i <= data.paging.lastPage; i++) {
-                if ( i == data.paging.currentPage ) {
-                    result.push( <a href="javascript:void(0);" key={i} className="active">{i}</a> );
-                } else {
-                    result.push( <a href="javascript:void(0);" key={i} onClick={(e) => {handlePage(e, i)}}>{i}</a> );
-                }
-            }
-        }
-
-        return result;
-    };
-
     const handlePage = (e, currentPage, type) => {
         e.preventDefault();
 
@@ -51,7 +35,7 @@ function Pagination() {
             return false;
         }
 
-        if ( data.paging.firstPage === 1 && type == 'prev') {
+        if ( data.paging.firstPage === 1 && type === 'prev') {
             return false;
         }
 
@@ -70,7 +54,6 @@ function Pagination() {
         <>
             <CommonPagination
                 data={data}
-                rendering={rendering}
                 handlePage={handlePage}
             />
         </>
