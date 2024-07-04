@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import Captcha from "../pages/Captcha";
 import Pagination from "../pages/Pagination";
-import Calendar from "../pages/Calendar ";
+import Calendar from "../pages/Calendar";
 import Map from "../pages/Map";
 
 function CommonRoute() {
