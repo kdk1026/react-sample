@@ -24,6 +24,9 @@ function CommonCalendar(props) {
     const dateTotalCount = new Date(selectedYear, selectedMonth, 0).getDate();
 
     const [selectedDate, setSelectedDate] = useState("");
+    
+    const todayStrDate = Today.getTodayString();
+    const afterStrDate = CalcDate.plusMinusDay(31);
 
     const returnWeek = useCallback(() => {
         const weekArr = [];
@@ -56,9 +59,6 @@ function CommonCalendar(props) {
                 for (let i = 0; i < dateTotalCount; i++) {
                     const date = new Date(selectedYear, selectedMonth - 1, i + 1);
                     const strDate = Convert.getDateToStringFormat(date, "YYYYMMDD");
-
-                    const todayStrDate = Today.getTodayString();
-                    const afterStrDate = CalcDate.plusMinusDay(31);
 
                     dayArr.push(
                         <div
