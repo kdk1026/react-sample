@@ -5,7 +5,8 @@ function Header() {
         <>
           <nav>
             <Link to="/">Home</Link> | <Link to="/captcha">Captcha</Link> |&nbsp;
-            <Link to="/pagination">Pagination</Link> | <Link to="/calendar">Calendar</Link>
+            <Link to="/pagination">Pagination</Link> | <Link to="/calendar">Calendar</Link> |&nbsp;
+            <Link to="/map">Naver Map</Link>
           </nav>  
         </>
     )

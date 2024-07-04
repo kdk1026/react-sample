@@ -3,6 +3,7 @@ import MainLayout from "./layout/MainLayout";
 import Captcha from "../pages/Captcha";
 import Pagination from "../pages/Pagination";
 import Calendar from "../pages/Calendar ";
+import Map from "../pages/Map";
 
 function CommonRoute() {
     return (
@@ -12,6 +13,7 @@ function CommonRoute() {
                     <Route path="captcha" element={<Captcha />} />
                     <Route path="pagination" element={<Pagination />} />
                     <Route path="calendar" element={<Calendar />} />
+                    <Route path="map" element={<Map />} />
                 </Route>
             </Routes>
         </nav>
