@@ -35,29 +35,31 @@ function SwiperPage() {
 
     return (
         <>
-            <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-                spaceBetween={50}
-                slidesPerView={1}
-                navigation
-                pagination={{ clickable: true }}
-                scrollbar={{ draggable: true }}
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false
-                }}
-                ref={mySwiper}
-            >
-                {
-                   slides.map((slideContent, index) => {
-                    return (
-                    <SwiperSlide key={index} virtualIndex={index}>
-                        {slideContent}
-                    </SwiperSlide>
-                    )
-                   })
-                }
-            </Swiper>
+            <div style={{width: '950px'}}>
+                <Swiper
+                    modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    navigation
+                    pagination={{ clickable: true }}
+                    scrollbar={{ draggable: true }}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false
+                    }}
+                    ref={mySwiper}
+                >
+                    {
+                    slides.map((slideContent, index) => {
+                        return (
+                        <SwiperSlide key={index} virtualIndex={index}>
+                            {slideContent}
+                        </SwiperSlide>
+                        )
+                    })
+                    }
+                </Swiper>
+            </div>
             <div className="btnWrap">
                 <button onClick={handlePlay}>{isPlay ? '종료' : '시작'}</button>
             </div>
