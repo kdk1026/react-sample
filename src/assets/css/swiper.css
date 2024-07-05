@@ -1,0 +1,6 @@
+.btnWrap {
+    position: absolute;
+    top: 250px;
+    z-index: 1;
+    left: 670px;
+}

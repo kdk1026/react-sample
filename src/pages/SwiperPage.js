@@ -6,7 +6,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/virtual';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+
+import '../assets/css/swiper.css'
 
 function SwiperPage() {
     const slides = Array.from({ length: 5 }).map(
@@ -14,7 +16,9 @@ function SwiperPage() {
     );
 
     const mySwiper = useRef(null);
+    const [isPlay, setIsPlay] = useState(true);
 
+    /*
     const onPlay = () => {
         mySwiper.current.swiper.autoplay.start();
     };
@@ -22,6 +26,12 @@ function SwiperPage() {
     const onPause = () => {
         mySwiper.current.swiper.autoplay.stop();
     };
+    */
+
+    const handlePlay = () => {
+        isPlay ? mySwiper.current.swiper.autoplay.stop() : mySwiper.current.swiper.autoplay.start();
+        setIsPlay(!isPlay);
+    }
 
     return (
         <>
@@ -48,8 +58,11 @@ function SwiperPage() {
                    })
                 }
             </Swiper>
-            <button onClick={onPlay}>시작</button>
-            <button onClick={onPause}>종료</button>
+            <div className="btnWrap">
+                <button onClick={handlePlay}>{isPlay ? '종료' : '시작'}</button>
+            </div>
+            {/* <button onClick={onPlay}>시작</button>
+            <button onClick={onPause}>종료</button> */}
         </>
     )
 }
