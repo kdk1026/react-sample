@@ -5,6 +5,7 @@ import Pagination from "../pages/Pagination";
 import Calendar from "../pages/Calendar";
 import Map from "../pages/Map";
 import SwiperPage from "../pages/SwiperPage";
+import ToastPage from "../pages/ToastPage";
 
 function CommonRoute() {
     return (
@@ -16,6 +17,7 @@ function CommonRoute() {
                     <Route path="calendar" element={<Calendar />} />
                     <Route path="map" element={<Map />} />
                     <Route path="swiper" element={<SwiperPage />} />
+                    <Route path="toast" element={<ToastPage />} />
                 </Route>
             </Routes>
         </nav>
