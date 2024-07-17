@@ -9,7 +9,7 @@ import ToastPage from "../pages/ToastPage";
 
 function CommonRoute() {
     return (
-        <nav>
+        <>
             <Routes>
                 <Route path="/" element={<MainLayout />}>
                     <Route path="captcha" element={<Captcha />} />
@@ -20,7 +20,7 @@ function CommonRoute() {
                     <Route path="toast" element={<ToastPage />} />
                 </Route>
             </Routes>
-        </nav>
+        </>
     )
 }
 
