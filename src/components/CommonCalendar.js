@@ -19,6 +19,7 @@ function CommonCalendar(props) {
     };
 
     const week = ["일", "월", "화", "수", "목", "금", "토"];
+    
     const [selectedYear, setSelectedYear] = useState(today.year);
     const [selectedMonth, setSelectedMonth] = useState(today.month);
     const dateTotalCount = new Date(selectedYear, selectedMonth, 0).getDate();
@@ -27,6 +28,8 @@ function CommonCalendar(props) {
     
     const todayStrDate = Today.getTodayString();
     const afterStrDate = CalcDate.plusMinusDay(31);
+
+    const day = new Date(selectedYear, selectedMonth - 1, 1).getDay();
 
     const returnWeek = useCallback(() => {
         const weekArr = [];
@@ -53,7 +56,6 @@ function CommonCalendar(props) {
         const dayArr = [];
 
         for (const nowDay of week) {
-            const day = new Date(selectedYear, selectedMonth - 1, 1).getDay();
 
             if ( week[day] === nowDay ) {
                 for (let i = 0; i < dateTotalCount; i++) {
