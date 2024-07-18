@@ -1,4 +1,3 @@
-import { BrowserRouter } from "react-router-dom";
 import CommonRoute from "./components/CommonRoute";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,9 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <CommonRoute />
-      </BrowserRouter>
+      <CommonRoute />
       <ToastContainer
         position="top-center" // 알림 위치 지정
         autoClose={5000}  // 자동 off 시간
