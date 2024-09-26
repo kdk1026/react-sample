@@ -18,16 +18,6 @@ function SwiperPage() {
     const mySwiper = useRef(null);
     const [isPlay, setIsPlay] = useState(true);
 
-    /*
-    const onPlay = () => {
-        mySwiper.current.swiper.autoplay.start();
-    };
-
-    const onPause = () => {
-        mySwiper.current.swiper.autoplay.stop();
-    };
-    */
-
     const handlePlay = () => {
         isPlay ? mySwiper.current.swiper.autoplay.stop() : mySwiper.current.swiper.autoplay.start();
         setIsPlay(!isPlay);
@@ -35,7 +25,8 @@ function SwiperPage() {
 
     return (
         <>
-            <div style={{width: '950px'}}>
+            <div className="swiper-container">
+                <button className="close-button" onClick={handlePlay}>{isPlay ? '종료' : '시작'}</button>
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                     spaceBetween={50}
@@ -60,11 +51,6 @@ function SwiperPage() {
                     }
                 </Swiper>
             </div>
-            <div className="btnWrap">
-                <button onClick={handlePlay}>{isPlay ? '종료' : '시작'}</button>
-            </div>
-            {/* <button onClick={onPlay}>시작</button>
-            <button onClick={onPause}>종료</button> */}
         </>
     )
 }
