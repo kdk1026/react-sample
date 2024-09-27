@@ -6,9 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/virtual';
-import { useRef, useState } from 'react';
-
-import '../assets/css/swiper.css'
+import { useEffect, useRef, useState } from 'react';
 
 function SwiperPage() {
     const slides = Array.from({ length: 5 }).map(
@@ -16,17 +14,26 @@ function SwiperPage() {
     );
 
     const mySwiper = useRef(null);
+    const closeButtonRef = useRef(null);
+
     const [isPlay, setIsPlay] = useState(true);
 
     const handlePlay = () => {
         isPlay ? mySwiper.current.swiper.autoplay.stop() : mySwiper.current.swiper.autoplay.start();
         setIsPlay(!isPlay);
-    }
+    };
+
+    useEffect(() => {
+        const pagination = document.querySelector('.swiper-pagination');
+        if (pagination && closeButtonRef.current) {
+            pagination.appendChild(closeButtonRef.current);
+        }
+    }, [isPlay]);
 
     return (
         <>
-            <div className="swiper-container">
-                <button className="close-button" onClick={handlePlay}>{isPlay ? '종료' : '시작'}</button>
+            <div>
+                <button ref={closeButtonRef} onClick={handlePlay}>{isPlay ? '종료' : '시작'}</button>
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                     spaceBetween={50}
