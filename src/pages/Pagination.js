@@ -22,8 +22,12 @@ function Pagination() {
         });
 
         const fetchData = async () => {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/page?currentPage=${page}`);
-            setData(res.data);
+            try {
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/page?currentPage=${page}`);
+                setData(res.data);
+            } catch (error) {
+                console.error(error);
+            }
         }
         fetchData();
     }, [navigate, pathname, page]);
