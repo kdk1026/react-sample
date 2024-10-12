@@ -7,6 +7,8 @@ import Map from "../pages/Map";
 import SwiperPage from "../pages/SwiperPage";
 import ToastPage from "../pages/ToastPage";
 import Main from "../pages/Main";
+import InputDate from "../pages/InputDate";
+import ReactDatePicker from "../pages/ReactDatePicker";
 
 function CommonRoute() {
     return (
@@ -21,6 +23,8 @@ function CommonRoute() {
                         <Route path="/map" element={<Map />} />
                         <Route path="/swiper" element={<SwiperPage />} />
                         <Route path="/toast" element={<ToastPage />} />
+                        <Route path="/inpput-date" element={<InputDate />} />
+                        <Route path="/datepicker" element={<ReactDatePicker />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

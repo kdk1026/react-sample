@@ -1,0 +1,13 @@
+.react-datepicker__header {
+    height: auto;
+    /* 헤더 높이를 자동으로 조정 */
+}
+
+/* .react-datepicker__month-dropdown-container,
+.react-datepicker__year-dropdown-container {
+    margin-top: 12px;
+} */
+
+.react-datepicker__current-month {
+    display: none;
+}
