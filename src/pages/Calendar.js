@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CommonCalendar from "../components/CommonCalendar";
 import Modal from "react-modal";
+import { Helmet } from "react-helmet-async";
 
 function Calendar() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -37,8 +38,14 @@ function Calendar() {
         setSelectedDate(strDate);
     };
 
+    const title = process.env.REACT_APP_TITLE;
+
     return (
         <>
+            <Helmet>
+                <title>{title} | Calendar</title>
+            </Helmet>
+
             <button onClick={() => setModalIsOpen(true)}>달력 Modal Open</button>
 
             <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} style={customModalStyles}>

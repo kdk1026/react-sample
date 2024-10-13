@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { CalcDate, Convert } from "../utils/date";
 import "../assets/css/date.css";
+import { Helmet } from "react-helmet-async";
 
 function InputDate() {
     const [startDate, setStartDate] = useState(() => {
@@ -51,8 +52,14 @@ function InputDate() {
     const minDate = CalcDate.plusMinusYearFormat(-10, 'YYYY-MM-DD');
     const maxDate = CalcDate.plusMinusYearFormat(10, 'YYYY-MM-DD');
 
+    const title = process.env.REACT_APP_TITLE;
+
     return (
         <>
+            <Helmet>
+                <title>{title} | InputDate</title>
+            </Helmet>
+
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '50px' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <input

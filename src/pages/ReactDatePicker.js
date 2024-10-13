@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { Convert } from "../utils/date";
 import DatePickerComp from "../components/DatePickerComp";
+import { Helmet } from "react-helmet-async";
 
 function ReactDatePicker() {
     const [startDate, setStartDate] = useState(() => {
@@ -65,8 +66,14 @@ function ReactDatePicker() {
         setIsEndOpen(false);
     };
 
+    const title = process.env.REACT_APP_TITLE;
+
     return (
         <>
+            <Helmet>
+                <title>{title} | DatePicker</title>
+            </Helmet>
+
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '50px' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <DatePickerComp

@@ -3,6 +3,7 @@ import "../assets/css/pagination.css";
 import axios from "axios";
 import { createSearchParams, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import CommonPagination from "../components/CommonPagination";
+import { Helmet } from "react-helmet-async";
 
 function Pagination() {
     const [params] = useSearchParams();
@@ -54,8 +55,13 @@ function Pagination() {
         setPage(currentPage);
     };
 
+    const title = process.env.REACT_APP_TITLE;
+
     return (
         <>
+            <Helmet>
+                <title>{title} | Pagination</title>
+            </Helmet>
             <CommonPagination
                 data={data}
                 handlePage={handlePage}

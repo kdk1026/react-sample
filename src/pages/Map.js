@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 
 function Map() {
     const mapRef = useRef(null);
@@ -36,8 +37,14 @@ function Map() {
         }
     }, []);
 
+    const title = process.env.REACT_APP_TITLE;
+
     return (
         <>
+            <Helmet>
+                <title>{title} | Naver Map</title>
+            </Helmet>
+
             <div ref={mapRef} style={{width: '1024px', height: '500px'}}></div>
         </>
     )

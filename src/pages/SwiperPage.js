@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/virtual';
 import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 function SwiperPage() {
     const slides = Array.from({ length: 5 }).map(
@@ -30,8 +31,14 @@ function SwiperPage() {
         }
     }, [isPlay]);
 
+    const title = process.env.REACT_APP_TITLE;
+
     return (
         <>
+            <Helmet>
+                <title>{title} | Swiper</title>
+            </Helmet>
+
             <div>
                 <button ref={closeButtonRef} onClick={handlePlay}>{isPlay ? '종료' : '시작'}</button>
                 <Swiper

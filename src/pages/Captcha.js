@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CommonCaptcha from "../components/CommonCaptcha";
+import { Helmet } from "react-helmet-async";
 
 function Captcha() {
     const [imageData, setImageData] = useState(null);
@@ -19,8 +20,13 @@ function Captcha() {
         setRand(rand);
     };
 
+    const title = process.env.REACT_APP_TITLE;
+
     return (
         <> 
+            <Helmet>
+                <title>{title} | Captcha</title>
+            </Helmet>
             <CommonCaptcha
                 imageData={imageData}
                 handleListen={handleListen}

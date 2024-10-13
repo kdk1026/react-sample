@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 
 function ToastPage() {
@@ -17,8 +18,14 @@ function ToastPage() {
         toast.warning('toastify warning!');
     };
 
+    const title = process.env.REACT_APP_TITLE;
+
     return (
         <>
+            <Helmet>
+                <title>{title} | Toast</title>
+            </Helmet>
+
             <button onClick={notify}>Toast 기본</button>
             <button onClick={success}>Toast Success</button>
             <button onClick={error}>Toast Error</button>
