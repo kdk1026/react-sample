@@ -14,6 +14,7 @@ function Header() {
             <Link to="/toast">Toast</Link>
             <Link to="/inpput-date">Input Date</Link>
             <Link to="/datepicker">DatePciker</Link>
+            <Link to="/social-login">소셜 로그인</Link>
           </nav>  
         </>
     )

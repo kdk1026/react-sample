@@ -9,6 +9,9 @@ import ToastPage from "../pages/ToastPage";
 import Main from "../pages/Main";
 import InputDate from "../pages/InputDate";
 import ReactDatePicker from "../pages/ReactDatePicker";
+import EmptyPage from "../pages/EmptyPage";
+import SocialLogin from "../pages/SocialLogin";
+import NaverLoginCallback from "../pages/NaverLoginCallback";
 
 function CommonRoute() {
     return (
@@ -25,7 +28,10 @@ function CommonRoute() {
                         <Route path="/toast" element={<ToastPage />} />
                         <Route path="/inpput-date" element={<InputDate />} />
                         <Route path="/datepicker" element={<ReactDatePicker />} />
+                        <Route path="/social-login" element={<SocialLogin />} />
                     </Route>
+                    <Route path="/naver-login-callback" element={<NaverLoginCallback />} />
+                    <Route path="*" element={<EmptyPage />} />
                 </Routes>
             </BrowserRouter>
         </>
