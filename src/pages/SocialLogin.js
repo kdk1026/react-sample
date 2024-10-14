@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { loginWithKakao, loginWithNaver, logoutWithKakao } from "../utils/socialLogin";
+import { Helmet } from "react-helmet-async";
 
 function SocialLogin() {
     const [naverUser, setNaverUser] = useState({});
@@ -55,12 +56,18 @@ function SocialLogin() {
         alert('카카오 로그인에 실패했습니다.\n잠시 후 다시 시도해주세요.\n지속적인 오류 발생 시 관리자에게 문의바랍니다.');
     };
 
-    const kakaoLogoutCallBack = (accessToken) => {
+    const kakaoLogoutCallBack = () => {
         console.log('Kakao User signed out.');
     };
 
+    const title = process.env.REACT_APP_TITLE;
+
     return (
         <>
+            <Helmet>
+                <title>{title} | 소셜 로그인</title>
+            </Helmet>
+
             <div>
                 <button onClick={handleNaverLoginClick}>네이버 로그인</button>
                 <div id="naverIdLogin" style={{ display: 'none' }}></div>
