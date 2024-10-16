@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { loginWithNaverCallBack } from "../utils/socialLogin";
 
 function NaverLoginCallback() {
-    useEffect(() => {
-        const naverLogin = loginWithNaverCallBack(process.env.REACT_APP_NAVER_CLIENT_ID, `${process.env.REACT_APP_FRONT_URL}/naver-login-callback`);
+
+    const naverCliendId = process.env.REACT_APP_NAVER_CLIENT_ID;
+    const naverCallbackUrl = `${process.env.REACT_APP_FRONT_URL}/naver-login-callback`;
+
+    const naverLoginCallback = useCallback(() => {
+        const naverLogin = loginWithNaverCallBack(naverCliendId, naverCallbackUrl);
 
         window.addEventListener('load', function () {
             naverLogin.getLoginStatus(function (status) {
@@ -21,7 +25,11 @@ function NaverLoginCallback() {
                 }
             });
         });
-    }, []);
+    }, [naverCliendId, naverCallbackUrl]);
+
+    useEffect(() => {
+        naverLoginCallback();
+    }, [naverLoginCallback]);
 
     return (
         <>
