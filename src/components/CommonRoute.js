@@ -18,17 +18,17 @@ function CommonRoute() {
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route element={<MainLayout />}>
-                        <Route path="/" element={<Main />} />
-                        <Route path="/captcha" element={<Captcha />} />
-                        <Route path="/pagination" element={<Pagination />} />
-                        <Route path="/calendar" element={<Calendar />} />
-                        <Route path="/map" element={<Map />} />
-                        <Route path="/swiper" element={<SwiperPage />} />
-                        <Route path="/toast" element={<ToastPage />} />
-                        <Route path="/inpput-date" element={<InputDate />} />
-                        <Route path="/datepicker" element={<ReactDatePicker />} />
-                        <Route path="/social-login" element={<SocialLogin />} />
+                    <Route path="/" element={<MainLayout />}>
+                        <Route index element={<Main />} />
+                        <Route path="captcha" element={<Captcha />} />
+                        <Route path="pagination" element={<Pagination />} />
+                        <Route path="calendar" element={<Calendar />} />
+                        <Route path="map" element={<Map />} />
+                        <Route path="swiper" element={<SwiperPage />} />
+                        <Route path="toast" element={<ToastPage />} />
+                        <Route path="inpput-date" element={<InputDate />} />
+                        <Route path="datepicker" element={<ReactDatePicker />} />
+                        <Route path="social-login" element={<SocialLogin />} />
                     </Route>
                     <Route path="/naver-login-callback" element={<NaverLoginCallback />} />
                     <Route path="*" element={<EmptyPage />} />
