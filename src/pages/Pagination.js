@@ -1,37 +1,45 @@
 import { useEffect, useState } from "react";
 import "../assets/css/pagination.css";
-import axios from "axios";
 import { createSearchParams, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import CommonPagination from "../components/CommonPagination";
 import { Helmet } from "react-helmet-async";
+import { fetchPageData } from "../apis/test";
+import useApi from "../hooks/useApi";
 
 function Pagination() {
-    const [params] = useSearchParams();
+    const [params, setParams] = useSearchParams();
 
     const [page, setPage] = useState(params.get('page')||'1');
     const [data, setData] = useState([]);
 
-    const navigate = useNavigate();
-    const { pathname } = useLocation;
+    // const navigate = useNavigate();
+    // const { pathname } = useLocation;
+
+    const { apiData: pageData, callApi: fetchPageDataApi } = useApi(fetchPageData, [page], false);
 
     useEffect(() => {
-        navigate({
-            pathname: pathname,
-            search: `?${createSearchParams({
-                page: page,
-            })}`,
-        });
+        // fetchPageDataApi();
+        fetchPageDataApi([page]);
+    }, [fetchPageDataApi, page]);
 
-        const fetchData = async () => {
-            try {
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/page?currentPage=${page}`);
-                setData(res.data);
-            } catch (error) {
-                console.error(error);
-            }
+    // useEffect(() => {
+    //     navigate({
+    //         pathname: pathname,
+    //         search: `?${createSearchParams({
+    //             page: page,
+    //         })}`,
+    //     });
+    // }, [navigate, pathname, page]);
+
+    useEffect(() => {
+        setParams({ page });
+    }, [setParams, page]);
+
+    useEffect(() => {
+        if ( pageData ) {
+            setData(pageData);
         }
-        fetchData();
-    }, [navigate, pathname, page]);
+    }, [pageData]);
 
     const handlePage = (e, currentPage, type) => {
         e.preventDefault();
