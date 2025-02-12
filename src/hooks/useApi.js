@@ -64,8 +64,8 @@ const useApi = (apiFunction, initialParams, callOnInit = true) => {
             if ( JSON.stringify(params) === JSON.stringify(prevParams) ) {
                 return;
             }
+            setPrevParams(params);
         }
-        setPrevParams(params);
 
         try {
             const res = await apiFunction(...params);
