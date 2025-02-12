@@ -9,8 +9,8 @@ function EmptyPage() {
                     textAlign: 'center', 
                     fontSize: '24px', 
                     marginTop: '20px'
-                }
-            }>잘못된 접근입니다.</h2>
+                }}
+            >잘못된 접근입니다.</h2>
             <Link 
                 to="/" 
                 style={{
