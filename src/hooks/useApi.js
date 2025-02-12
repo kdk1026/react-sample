@@ -26,16 +26,8 @@ import { useNavigate } from 'react-router-dom';
  * };
  * 
  * const sendData = async (formData) => {
- *  registUsageWriteApi([formData])
- *     .then((res) => {
- *          if ( res.code != 200 ) {
- *              toast.warning(res.message);
- *          } else {
- *              toast.success(res.message, {
- *                  onClose: () => navigate('/') 
- *              });
- *          }
- *      }); 
+ *  const res = await registUsageWriteApi([formData]);
+ *  console.log(res);
  * };
  * ===============================================
  * const { apiData: notiListData, callApi: fetchNotiList, apiPaging } = useApi(getNotiList, [storeCd, lang, 'HC01601', pageIndex, notiCd, q], false);
@@ -59,17 +51,25 @@ import { useNavigate } from 'react-router-dom';
  */
 const useApi = (apiFunction, initialParams, callOnInit = true) => {
     const navigate = useNavigate();
+
     const [apiParams, setApiParams] = useState(initialParams || []);
     const [apiData, setApiData] = useState(null);
     const [apiPaging, setApiPaging] = useState(null);
     const [prevParams, setPrevParams] = useState(null);
+
     const callApi = useCallback(async (params = apiParams) => {
-        if ( JSON.stringify(params) === JSON.stringify(prevParams) ) {
-            return;
+        if ( params[0] instanceof FormData ) {
+            //
+        } else {
+            if ( JSON.stringify(params) === JSON.stringify(prevParams) ) {
+                return;
+            }
         }
         setPrevParams(params);
+
         try {
             const res = await apiFunction(...params);
+
             if ( res.data.list ) {
                 setApiData(res.data.list);
             } else if ( res.data.data ) {
@@ -77,9 +77,11 @@ const useApi = (apiFunction, initialParams, callOnInit = true) => {
             } else {
                 setApiData(res.data);
             }
+            
             if ( res.data.paging ) {
                 setApiPaging(res.data.paging);
             }
+
             return res.data;
         } catch (error) {
             if (error.status === 999) {
@@ -89,16 +91,19 @@ const useApi = (apiFunction, initialParams, callOnInit = true) => {
             throw error;
         }
     }, [apiFunction, apiParams, prevParams, navigate]);
+
     useEffect(() => {
         if ( JSON.stringify(apiParams) !== JSON.stringify(initialParams) ) {
             setApiParams(initialParams);
         }
     }, [apiParams, initialParams]);
+
     useEffect(() => {
         if ( callOnInit)  {
             callApi(apiParams);
         }
     }, [callOnInit, callApi, apiParams]);
+
     return {
         apiData, apiPaging,
         callApi
