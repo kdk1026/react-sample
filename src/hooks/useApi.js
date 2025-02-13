@@ -84,11 +84,11 @@ const useApi = (apiFunction, initialParams, callOnInit = true) => {
 
             return res.data;
         } catch (error) {
-            if (error.status === 999) {
+            if ( error.status === 999 ) {
                 navigate("/error-network");
             }
+            
             console.log(error);
-            throw error;
         }
     }, [apiFunction, apiParams, prevParams, navigate]);
 

@@ -12,6 +12,7 @@ import ReactDatePicker from "../pages/ReactDatePicker";
 import EmptyPage from "../pages/EmptyPage";
 import SocialLogin from "../pages/SocialLogin";
 import NaverLoginCallback from "../pages/NaverLoginCallback";
+import NetworkErrorPage from "../pages/NetworkErrorPage";
 
 function CommonRoute() {
     return (
@@ -31,6 +32,7 @@ function CommonRoute() {
                         <Route path="social-login" element={<SocialLogin />} />
                     </Route>
                     <Route path="/naver-login-callback" element={<NaverLoginCallback />} />
+                    <Route path="/error-network" element={<NetworkErrorPage />} />
                     <Route path="*" element={<EmptyPage />} />
                 </Routes>
             </BrowserRouter>
